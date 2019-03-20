@@ -1,0 +1,67 @@
+@media (max-width: 991px){
+    .container {
+        width: 750px;
+        margin: 0 auto;
+    }
+
+    .flex-container{
+        flex:0 0 750px;
+    }
+
+    .banner{
+        width: 473px;
+        border-radius: 7px;
+        overflow: hidden;
+    }
+
+    .banner-warp{
+        width: 473px;
+        height: 175px;
+    }
+}
+
+@media (min-width: 992px){
+    .container {
+        width: 1024px;
+        margin: 0 auto;
+    }
+
+    .flex-container{
+        flex:0 0 1024px;
+    }
+
+    .banner{
+        width: 656px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .banner-warp{
+        width: 656px;
+        height: 250px;
+    }
+}
+/* .container{
+    width: 1024px;
+    margin: 0 auto;
+}
+*/
+.flex-container{
+    flex: 8;
+} 
+
+.flex{
+    display: flex;
+}
+
+.flex-1{
+    flex:1;
+}
+
+.flex-2{
+    flex:2;
+}
+
+.flex-3{
+    flex:3;
+}
