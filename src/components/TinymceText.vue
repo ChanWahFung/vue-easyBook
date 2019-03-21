@@ -17,6 +17,7 @@ import 'tinymce/plugins/contextmenu'
 import 'tinymce/plugins/wordcount'
 import 'tinymce/plugins/colorpicker'
 import 'tinymce/plugins/textcolor'
+import '../../public/tinymce/langs/zh_CN.js'
 
 export default {
     name:'',
@@ -27,7 +28,6 @@ export default {
         return {
             init:{
                 selector: '#'+this.id,
-                language_url: 'tinymce/langs/zh_CN.js',
                 language: 'zh_CN',
                 skin_url: 'tinymce/skins/ui/oxide',
                 height: 500,
@@ -35,7 +35,6 @@ export default {
                 toolbar:
                 'bold italic underline strikethrough | fontsizeselect | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent blockquote | undo redo | link unlink image code | removeformat',
                 branding: false,
-                body_class: 'my_class'
             }
         };
     },

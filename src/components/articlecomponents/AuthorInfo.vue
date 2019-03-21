@@ -11,7 +11,7 @@
                     <span v-if="user.likes_count">获得了 {{user.likes_count}} 个喜欢</span>
                 </p>
             </div>
-            <FollowBtn></FollowBtn>
+            <FollowBtn @click.native="pushFollowList"></FollowBtn>
         </div>
         <div class="line"></div>
         <div v-if="user.intro" class="intro">
@@ -32,6 +32,21 @@ export default {
     data () {
         return {
         };
+    },
+    methods:{
+        pushFollowList(){
+            if(!this.$store.state.isLogin){
+                this.$router.push('/login')
+                return;
+            }
+            let item = {
+                avatar:this.user.avatar,
+                title:this.user.nickname,
+                slug:this.user.slug,
+                type:'User'
+            }
+            this.$store.commit('pushFollowList',item)
+        }
     },
     components:{
         FollowBtn

@@ -11,7 +11,7 @@
                </span>
             </p>
         </div>
-        <FollowBtn class="btn"></FollowBtn>
+        <FollowBtn @click.native="pushFollowList" class="btn"></FollowBtn>
     </div>
 </template>
 
@@ -35,6 +35,19 @@ export default {
     methods:{
         goAuthor(slug){
             this.$router.push('/author/'+slug);
+        },
+        pushFollowList(){
+            if(!this.$store.state.isLogin){
+                this.$router.push('/login')
+                return;
+            }
+            let item = {
+                avatar:this.source.avatar_source,
+                title:this.source.nickname,
+                slug:this.source.slug,
+                type:'User'
+            }
+            this.$store.commit('pushFollowList',item)
         }
     }
 }

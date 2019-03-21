@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="flex-1">
-            <FollowBtn></FollowBtn>
+            <FollowBtn @click.native="pushFollowList"></FollowBtn>
         </div>
     </div> 
 </template>
@@ -52,11 +52,26 @@ export default {
             }else if(val === 2){
                 return 'iconfont icon-nv nv'
             }
-        }
+        },
     },
     data () {
         return {
         };
+    },
+    methods: {
+        pushFollowList(){
+            if(!this.$store.state.isLogin){
+                this.$router.push('/login')
+                return;
+            }
+            let item = {
+                avatar:this.author.avatar,
+                title:this.author.nickname,
+                slug:this.author.slug,
+                type:'User'
+            }
+            this.$store.commit('pushFollowList',item)
+        }
     },
     components:{
         FollowBtn

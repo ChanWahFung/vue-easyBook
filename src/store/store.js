@@ -38,7 +38,7 @@ export default new Vuex.Store({
         {type:'user',title:'推荐作者'},
         {type:'collection',title:'推荐专题'}
       ],
-      recommendList:[],
+      followList:[],
       //个人文章列表
       myArticleList:[],
       //作者栏目

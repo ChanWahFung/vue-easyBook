@@ -10,7 +10,7 @@
                 <span class="like-count">{{source.likes_count}}人关注</span>
             </p>
         </div>
-        <FollowBtn class="btn"></FollowBtn>
+        <FollowBtn @click.native="pushFollowList" class="btn"></FollowBtn>
     </div>
 </template>
 
@@ -34,6 +34,19 @@ export default {
     methods:{
         goCollection(slug){
             this.$router.push('/collection/'+slug)
+        },
+        pushFollowList(){
+            if(!this.$store.state.isLogin){
+                this.$router.push('/login')
+                return;
+            }
+            let item = {
+                avatar:this.source.avatar_url,
+                title:this.source.title,
+                slug:this.source.slug,
+                type:'Collection'
+            }
+            this.$store.commit('pushFollowList',item)
         }
     }
 }

@@ -10,7 +10,7 @@
                 <span>{{collData.subscribers_count}} 人关注</span>
             </p>
         </div>
-        <FollowBtn class="btn"></FollowBtn>
+        <FollowBtn @click.native="pushFollowList" class="btn"></FollowBtn>
     </div>
 </template>
 
@@ -22,6 +22,21 @@ export default {
     data () {
         return {
         };
+    },
+    methods:{
+        pushFollowList(){
+            if(!this.$store.state.isLogin){
+                this.$router.push('/login')
+                return;
+            }
+            let item = {
+                avatar:this.collData.image,
+                title:this.collData.title,
+                slug:this.collData.slug,
+                type:'Collection'
+            }
+            this.$store.commit('pushFollowList',item)
+        }
     },
     components:{
         FollowBtn

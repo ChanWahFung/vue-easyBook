@@ -28,8 +28,10 @@
             <ShareBlock :likeConut="detailData.likes_count"></ShareBlock>
             <CommentInput @add-father-comment="addFatherComment"></CommentInput>
             <CommentList :commentList="commentList" @reverse-list="reverseList" @add-child-comment="addChildComment" @del-child-comment="delChildComment" @del-father-comment="delFatherComment"></CommentList>
-            <p class="recommend-title">推荐阅读</p>
-            <ArticleList :articles="recommendList" type="recommend"></ArticleList>
+            <div v-if="recommendList.length != 0">
+                <p class="recommend-title">推荐阅读</p>
+                <ArticleList :articles="recommendList" type="recommend"></ArticleList>
+            </div>
         </div>
     </div>
 </div>

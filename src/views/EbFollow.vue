@@ -6,8 +6,14 @@
                 <div class="sticky-box">
                     <div class="title">全部关注</div>
                     <div class="list">
-                        <div v-if="list.length == 0" class="tip">
+                        <div v-if="followList.length == 0" class="tip">
                             暂无关注
+                        </div>
+                        <div v-else>
+                            <div class="follow-item flex" @click="goDetail(item)" v-for="(item,index) in followList" :key="index">
+                                <author-avatar :url="item.avatar" size="large" shape='square'></author-avatar>
+                                <span>{{item.title}}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -25,6 +31,7 @@
 
 <script>
 import {mapState} from 'vuex'
+import AuthorAvatar from '../components/listcomponents/articlePart/AuthorAvatar'
 import RecommendList from '../components/listcomponents/RecommendList'
 export default {
     name:'',
@@ -38,7 +45,7 @@ export default {
     computed: {
         ...mapState({
             recommendTags:'recommendTags',
-            list:'recommendList'
+            followList:'followList'
         })
     },
     methods: {
@@ -57,6 +64,13 @@ export default {
                     console.error(res.status);
                 }
             })
+        },
+        goDetail({slug,type}){
+            if(type == 'User'){
+                this.$router.push('/author/'+slug)
+            }else if(type == 'Collection'){
+                this.$router.push('/collection/'+slug)
+            }
         }
     },
     created() {
@@ -73,7 +87,8 @@ export default {
             })
     },
     components:{
-        RecommendList
+        RecommendList,
+        'author-avatar':AuthorAvatar
     }
 }
 
@@ -101,6 +116,18 @@ export default {
             text-align:center;
             font-weight: 600;
             color:#999;
+        }
+    }
+
+    .follow-item{
+        align-items: center;
+        padding: 10px;
+        font-size: 15px;
+        border-radius: 3px;
+        cursor: pointer;
+
+        &:hover{
+            background: #f6f6f6;
         }
     }
 }
