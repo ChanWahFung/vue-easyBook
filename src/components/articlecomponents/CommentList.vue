@@ -35,7 +35,7 @@
                 </div>
                 <div class="comment-region">
                     <div class="comment-child" v-for="(it,i) in item.children" :key="i">
-                        <p class="content flex">
+                        <p class="content">
                             <a :href="'/author/'+it.user.slug">{{it.user.nickname}} : </a>
                             <span v-html="dealUrl(it.compiled_content)"></span>
                             <span v-if="it.self" @click="delChildComment(index,i)" class="c-delete">删除</span>
@@ -270,8 +270,13 @@ export default {
     .content{
         font-size: 14px;
 
+        >span{
+            word-break: break-all;
+        }
+
         .c-delete{
-            margin-left: auto;
+            display: block;
+            margin: 5px 0;
             color:#ccc;
             cursor: pointer;
         }

@@ -23,14 +23,14 @@
                 <div class="article-content" v-html="dealContentImg(detailData.free_content)">
                 </div>
             </div>
-            <SupportAuthor></SupportAuthor>
-            <AuthorInfo :user="detailData.user"></AuthorInfo>
-            <ShareBlock :likeConut="detailData.likes_count"></ShareBlock>
-            <CommentInput @add-father-comment="addFatherComment"></CommentInput>
-            <CommentList :commentList="commentList" @reverse-list="reverseList" @add-child-comment="addChildComment" @del-child-comment="delChildComment" @del-father-comment="delFatherComment"></CommentList>
-            <div v-if="recommendList.length != 0">
+            <SupportAuthor />
+            <AuthorInfo :user="detailData.user" />
+            <ShareBlock :likeConut="detailData.likes_count" />
+            <CommentInput @add-father-comment="addFatherComment" />
+            <CommentList :commentList="commentList" @reverse-list="reverseList" @add-child-comment="addChildComment" @del-child-comment="delChildComment" @del-father-comment="delFatherComment" />
+            <div v-if="recommendList && recommendList.length != 0">
                 <p class="recommend-title">推荐阅读</p>
-                <ArticleList :articles="recommendList" type="recommend"></ArticleList>
+                <ArticleList :articles="recommendList" type="recommend" />
             </div>
         </div>
     </div>

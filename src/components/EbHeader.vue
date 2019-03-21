@@ -23,7 +23,7 @@
                 </ul>
                 <div class="flex-2 flex search">
                     <input @keydown.enter="goSearch" @focus="focus" @blur="blur" :class="{active:show}" v-model="val" type="text" class="search-input" placeholder="搜索">
-                    <span class="icon iconfont icon-sousuo" :class="{active:show}"></span>
+                    <span @click="goSearch" class="icon iconfont icon-sousuo" :class="{active:show}"></span>
                 </div>
                 <div v-if="!isLogin" class="flex flex-1 user">
                     <router-link class="login" tag="span" to="/login">登录</router-link>
@@ -75,7 +75,7 @@ export default {
         goSearch(e){
             this.val = ''
             e.target.blur()
-            this.$router.push({path:'search',query:{q:this.val}})
+            this.$router.push('/search')
         },
         goMyHome(){
             this.$router.push('/author/'+this.user.slug)
@@ -179,7 +179,8 @@ export default {
             cursor: pointer;
         }
 
-        .register{
+        .register,
+        .login{
             padding: 6px 25px;
             color:@red;
             border-radius: 20px;
